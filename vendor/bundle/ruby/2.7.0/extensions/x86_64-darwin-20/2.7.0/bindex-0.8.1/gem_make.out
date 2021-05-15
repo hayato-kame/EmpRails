@@ -1,0 +1,15 @@
+current directory: /Users/rubykame/Desktop/EmpRails/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/rubykame/.rbenv/versions/2.7.3/bin/ruby -I /Users/rubykame/.rbenv/versions/2.7.3/lib/ruby/2.7.0 -r ./siteconf20210515-12077-e3ep0h.rb extconf.rb
+creating Makefile
+
+current directory: /Users/rubykame/Desktop/EmpRails/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/rubykame/Desktop/EmpRails/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/rubykame/Desktop/EmpRails/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210515-12077-ei9cs5/skiptrace/internal
