@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_081604) do
+ActiveRecord::Schema.define(version: 2021_05_15_230057) do
 
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(version: 2021_05_15_081604) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "departments", primary_key: "department_id", id: { type: :string, limit: 20 }, charset: "utf8mb4", force: :cascade do |t|
+    t.string "department_name", limit: 20, null: false
   end
 
 end
