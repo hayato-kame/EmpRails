@@ -9,6 +9,6 @@ class ToppagesController < ApplicationController
   def login_check
     @account = current_account
     pp @account
-    binding.pry
+    # binding.pry
   end
 end
