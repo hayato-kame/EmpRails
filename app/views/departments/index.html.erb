@@ -1,0 +1,21 @@
+<h1 class="eisplay-4 text-primary">部署一覧ページ</h1>
+
+<p style="color:red"><%= @f_msg %></p>
+
+<table class="table">
+  <tr>
+    <th>部署ID</th>
+    <th>部署名</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @departments.each do |dep|%>
+    <tr>
+      <td><%= dep.department_id %></td>
+      <td><%= dep.department_name%></td>
+      <td></td>
+      <td></td>
+    </tr>
+  <% end %>
+
+</table>
