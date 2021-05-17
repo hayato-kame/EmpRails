@@ -7,7 +7,14 @@ Rails.application.routes.draw do
   get 'toppages', to: 'toppages#index'
   get 'toppages/login_check', to: 'toppages#login_check'
 
+
   get 'departments/index'
   get 'departments',  to: 'departments#index'
+  get 'departments/dep_get'
+  post 'departments/dep_get'
+
+  get 'departments/dep_post/:department_id', to: 'departments#dep_post'
+
+
 
 end

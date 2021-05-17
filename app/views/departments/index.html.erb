@@ -2,6 +2,8 @@
 
 <p style="color:red"><%= @f_msg %></p>
 
+<%# any?で、もし、@departmentsが中身が空かどうかをチェックし、空ではなかったら、出力する %>
+<% if @departments.any? then %>
 <table class="table">
   <tr>
     <th>部署ID</th>
@@ -9,13 +11,35 @@
     <th colspan="2"></th>
   </tr>
 
+  <%# trタグを繰り返して出力する %>
   <% @departments.each do |dep|%>
     <tr>
       <td><%= dep.department_id %></td>
       <td><%= dep.department_name%></td>
-      <td></td>
-      <td></td>
+      <%# 編集ボタンを押すと、GET送信で、編集画面を表示する method: :get が必要です （postだったら省略可能ですが。） 引数では、ハッシュは、最後にする%>
+      <td>
+        <%= form_with(model: dep, method: :get , url: {controller: 'departments', action: 'dep_get', department_id: dep.department_id }) do |form| %>
+          <%# モデルに関係ない時には、hidden_field_tagを使う  hidden_field_tag :action_method , "edit"  第一引数、第二引数にしてください%>
+          <%= hidden_field_tag :action_method , "edit" %>
+          <%# form.インスタンスメソッド　の第一引数がハッシュになってる %>
+          <%= form.hidden_field :department_id => dep.department_id %>
+          <%= form.hidden_field :department_name => dep.department_name %>
+          <%= form.submit "編集", class: "btn btn-primary" %>
+        <% end %>
+      </td>
+      <%# 削除ボタンを押すと、GET送信で、そのまま削除される Restfulでは無いので  GET送信だから  %>
+      <td>
+        <%= form_with(model: dep, method: :get, url: {controller: 'departments', action: 'dep_post', department_id: dep.department_id }) do |form| %>
+          <%# モデルに関係ない時には、hidden_field_tagを使う 第一引数:action_method 第二引数 "delete" %>
+          <%= hidden_field_tag :action_method , "delete" %>
+
+          <%= form.hidden_field :department_id => dep.department_id %>
+          <%= form.submit "削除", class: "btn btn-danger" , onclick: "confirm(本当に削除してもよろしいですか)" %>
+        <% end %>
+      </td>
+
     </tr>
   <% end %>
 
 </table>
+<% end %>
