@@ -1,5 +1,18 @@
-<h1>Departments#dep_get</h1>
-<p>Find me in app/views/departments/dep_get.html.erb</p>
+<h1 class="display-4 text-primary">部署<%= label = @action_method == "add" ? '新規作成' : '編集' %>ページ</h1>
+
+<div class="toolbar"><%= link_to '部署一覧へ戻る' , '/departments/index' %></div>
+
+<p>部署データを<%= label %>します</p>
 
 
-<%= label = @action == "add" ? '新規作成ページ' : '編集ページ' %>
+<%= form_with(model: @department, method: :post,  url: {controller: 'departments', action: 'dep_post', department_id: @department.department_id }) do |form| %>
+
+  <div class="form-group">
+    <label for="department_name">部署名</label>
+    <%= form.text_field :department_name , { class: "form-control" } %>
+  </div>
+
+  <%= hidden_field_tag :action_method , "add" %>
+
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

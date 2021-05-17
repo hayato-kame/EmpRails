@@ -34,7 +34,7 @@
           <%= hidden_field_tag :action_method , "delete" %>
 
           <%= form.hidden_field :department_id => dep.department_id %>
-          <%= form.submit "削除", class: "btn btn-danger" , onclick: "confirm(本当に削除してもよろしいですか)" %>
+          <%= form.submit "削除", class: "btn btn-danger" , data: {confirm: "本当に削除しますか？" }%>
         <% end %>
       </td>
 
@@ -43,3 +43,6 @@
 
 </table>
 <% end %>
+
+ <%# button_to "ボタン名", { パス or コントローラー名とアクション名 }, { オプション } %>
+<%= button_to "新規作成" , { controller: 'departments' , action: 'dep_get' } , { method: :get, class: "btn btn-primary", params: {action_method: 'add'}} %>

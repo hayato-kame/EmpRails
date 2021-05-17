@@ -24,6 +24,13 @@ h1 {
     margin: 25px 0px;
 }
 
+.toolbar {
+    text-align: right;
+}
+.toolbar a {
+    color: rgb(102, 85, 102);
+}
+
 /* ページネーション */
 .page { padding:5px; border:1px lightblue solid; }
 .first { padding:5px; border:1px lightblue solid; }

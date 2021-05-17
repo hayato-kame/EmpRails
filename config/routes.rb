@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   get 'departments',  to: 'departments#index'
   get 'departments/dep_get'
   post 'departments/dep_get'
+  # ()は必須パラメータでないことを表す
+  post 'departments/dep_post(/:department_id)', to: 'departments#dep_post'
 
-  get 'departments/dep_post/:department_id', to: 'departments#dep_post'
+  get 'departments/dep_post(/:department_id)', to: 'departments#dep_post'
 
 
 
