@@ -13,13 +13,12 @@ class DepartmentsController < ApplicationController
 
   def display
     @action_method = params[:action_method]
-    # binding.pry
+    @f_msg = ''
+    
     case @action_method
     when "add" then
       @department = Department.new
-      # @department.department_id = ''
-      # @department.department_name = ''
-      # binding.pry
+
     when "edit" then
       @department = Department.find_by(department_id: params[:department_id])
       # binding.pry

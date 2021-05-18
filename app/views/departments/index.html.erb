@@ -1,7 +1,9 @@
 <h1 class="eisplay-4 text-primary">部署一覧ページ</h1>
 
 
+<% if @f_msg != "" %>
 <p class="f_msg"><%= @f_msg %></p>
+<% end %>
 
 
 <%# any?で、もし、@departmentsが中身が空かどうかをチェックし、空ではなかったら、出力する %>
