@@ -18,7 +18,7 @@
       <td><%= dep.department_name%></td>
       <%# 編集ボタンを押すと、GET送信で、編集画面を表示する method: :get が必要です （postだったら省略可能ですが。） 引数では、ハッシュは、最後にする%>
       <td>
-        <%= form_with(model: dep, method: :get , url: {controller: 'departments', action: 'dep_get', department_id: dep.department_id }) do |form| %>
+        <%= form_with(model: dep, method: :get , url: {controller: 'departments', action: 'display', department_id: dep.department_id }) do |form| %>
           <%# モデルに関係ない時には、hidden_field_tagを使う  hidden_field_tag :action_method , "edit"  第一引数、第二引数にしてください%>
           <%= hidden_field_tag :action_method , "edit" %>
           <%# form.インスタンスメソッド　の第一引数がハッシュになってる %>
@@ -29,7 +29,7 @@
       </td>
       <%# 削除ボタンを押すと、GET送信で、そのまま削除される Restfulでは無いので  GET送信だから  %>
       <td>
-        <%= form_with(model: dep, method: :get, url: {controller: 'departments', action: 'dep_post', department_id: dep.department_id }) do |form| %>
+        <%= form_with(model: dep, method: :get, url: {controller: 'departments', action: 'dep_manage', department_id: dep.department_id }) do |form| %>
           <%# モデルに関係ない時には、hidden_field_tagを使う 第一引数:action_method 第二引数 "delete" %>
           <%= hidden_field_tag :action_method , "delete" %>
 
@@ -45,4 +45,4 @@
 <% end %>
 
  <%# button_to "ボタン名", { パス or コントローラー名とアクション名 }, { オプション } %>
-<%= button_to "新規作成" , { controller: 'departments' , action: 'dep_get' } , { method: :get, class: "btn btn-primary", params: {action_method: 'add'}} %>
+<%= button_to "新規作成" , { controller: 'departments' , action: 'display' } , { method: :get, class: "btn btn-primary", params: {action_method: 'add'}} %>

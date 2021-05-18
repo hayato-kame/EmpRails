@@ -10,10 +10,9 @@ class DepartmentsController < ApplicationController
     render 'index'
   end
 
-  def dep_get
+  def display
     @action_method = params[:action_method]
     # binding.pry
-
     case @action_method
     when "add" then
       @department = Department.new
@@ -21,19 +20,16 @@ class DepartmentsController < ApplicationController
       # @department.department_name = ''
       # binding.pry
     when "edit" then
-
+      @department = Department.find_by(department_id: params[:department_id])
+      # binding.pry
     end
-
-
   end
 
-  def dep_post
+  def dep_manage
     @action_method = params[:action_method]
     # binding.pry
-
     # @department = Department.find_by(department_id: params[:department_id])
     # pp @department
-
     case @action_method
     when "add" then
       @department = Department.new department_params
@@ -46,18 +42,24 @@ class DepartmentsController < ApplicationController
         strId = last.department_id
         num = (strId[-2,2].to_i)+1
         resultStrId = sprintf("D%02d",num)
-        binding.pry
+        # binding.pry
       end
       @department.department_id = resultStrId
 
       unless @department.save then
         render 'dep_get'
-
       end
 
+    when "edit" then
+      @department = Department.find_by(department_id: params[:department_id])
+      # binding.pry
+      @department.update(department_params)
+
     when "delete" then
+      @department = Department.find_by(department_id: params[:department_id])
       @department.destroy
     end
+
     redirect_to '/departments'
   end
 

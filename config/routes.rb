@@ -10,12 +10,13 @@ Rails.application.routes.draw do
 
   get 'departments/index'
   get 'departments',  to: 'departments#index'
-  get 'departments/dep_get'
-  post 'departments/dep_get'
+  # ()は必須パラメータでないことを表す フォーム送信のところに department_id: @department.department_id あるから、任意パラメータにする
+  get 'departments/display(/:department_id)', to: 'departments#display'
+  post 'departments/display'
   # ()は必須パラメータでないことを表す
-  post 'departments/dep_post(/:department_id)', to: 'departments#dep_post'
+  post 'departments/dep_manage(/:department_id)', to: 'departments#dep_manage'
 
-  get 'departments/dep_post(/:department_id)', to: 'departments#dep_post'
+  get 'departments/dep_manage(/:department_id)', to: 'departments#dep_manage'
 
 
 
