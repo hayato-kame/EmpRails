@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: MyString
+  name: MyString
+  age: 1
+  gender: MyString
+  photo_id: 1
+  zip_number: MyString
+  pref: MyString
+  address1: MyString
+  address2: MyString
+  address3: MyString
+  department_id: MyString
+  hire_date: 2021-05-19 06:57:11
+  retire_date: 2021-05-19 06:57:11
+
+two:
+  employee_id: MyString
+  name: MyString
+  age: 1
+  gender: MyString
+  photo_id: 1
+  zip_number: MyString
+  pref: MyString
+  address1: MyString
+  address2: MyString
+  address3: MyString
+  department_id: MyString
+  hire_date: 2021-05-19 06:57:11
+  retire_date: 2021-05-19 06:57:11
