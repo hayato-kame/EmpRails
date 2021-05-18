@@ -1,8 +1,9 @@
 class DepartmentsController < ApplicationController
 
   def index
-    if params['f_msg'] != nil
-      @f_msg = params['f_msg']
+
+    if params[:f_msg] != nil
+      @f_msg = params[:f_msg]
     else
       @f_msg = ''
     end
@@ -27,6 +28,7 @@ class DepartmentsController < ApplicationController
 
   def dep_manage
     @action_method = params[:action_method]
+    @f_msg = ''
     # binding.pry
     # @department = Department.find_by(department_id: params[:department_id])
     # pp @department
@@ -47,20 +49,29 @@ class DepartmentsController < ApplicationController
       @department.department_id = resultStrId
 
       unless @department.save then
-        render 'dep_get'
+        @f_msg = '保存できませんでした。' # renderメソッドは、インスタンス変数をテンプレートに渡してくれる
+        render 'display' and return
       end
+      @f_msg = '新規データを保存しました。'
 
     when "edit" then
       @department = Department.find_by(department_id: params[:department_id])
       # binding.pry
-      @department.update(department_params)
+      # updateメソッドは、成功すると true 失敗するとfalseを返す
+      result = @department.update(department_params)
+      unless result #falseだったら
+        @f_msg = 'データ更新できませんでした。'
+        render 'display' and return #renderメソッドは、@f_msgインスタンス変数をテンプレートに渡します
+      end
+      @f_msg = 'データ更新しました。'
 
     when "delete" then
       @department = Department.find_by(department_id: params[:department_id])
       @department.destroy
+      @f_msg = 'データ削除しました。'
     end
-
-    redirect_to '/departments'
+    # 文字列の中に式展開する時には、ダブルクオーテーションで囲ってください
+    redirect_to "/departments?f_msg=#{@f_msg}"
   end
 
 

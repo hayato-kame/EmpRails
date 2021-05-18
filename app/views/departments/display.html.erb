@@ -4,6 +4,17 @@
 
 <p>部署データを<%= label %>します</p>
 
+<% if @f_msg %>
+<p class="f_msg"><%= @f_msg %></p>
+<% end %>
+
+<% if @department.errors.any? %>
+  <ul class="validation_err">
+    <% @department.errors.full_messages.each do |err| %>
+      <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with(model: @department, method: :post,  url: {controller: 'departments', action: 'dep_manage', department_id: @department.department_id }) do |form| %>
 
