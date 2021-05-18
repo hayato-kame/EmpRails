@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_230057) do
+ActiveRecord::Schema.define(version: 2021_05_18_054727) do
 
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2021_05_15_230057) do
 
   create_table "departments", primary_key: "department_id", id: { type: :string, limit: 20 }, charset: "utf8mb4", force: :cascade do |t|
     t.string "department_name", limit: 20, null: false
+  end
+
+  create_table "photos", primary_key: "photo_id", id: :integer, charset: "utf8mb4", force: :cascade do |t|
+    t.string "mime_type"
+    t.binary "photo_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
