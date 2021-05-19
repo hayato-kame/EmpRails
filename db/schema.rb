@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_054727) do
+ActiveRecord::Schema.define(version: 2021_05_18_215711) do
 
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 2021_05_18_054727) do
     t.string "department_name", limit: 20, null: false
   end
 
+  create_table "employees", primary_key: "employee_id", id: :string, charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", limit: 50
+    t.integer "age"
+    t.string "gender", limit: 1
+    t.integer "photo_id"
+    t.string "zip_number", limit: 20
+    t.string "pref", limit: 20
+    t.string "address1", limit: 100
+    t.string "address2", limit: 100
+    t.string "address3", limit: 100
+    t.string "department_id"
+    t.datetime "hire_date"
+    t.datetime "retire_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "fk_rails_0025f65a97"
+    t.index ["photo_id"], name: "fk_rails_bc108a363f"
+  end
+
   create_table "photos", primary_key: "photo_id", id: :integer, charset: "utf8mb4", force: :cascade do |t|
     t.string "mime_type"
     t.binary "photo_data"
@@ -35,4 +54,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_054727) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "employees", "departments", primary_key: "department_id"
+  add_foreign_key "employees", "photos", primary_key: "photo_id", on_delete: :cascade
 end
