@@ -12,7 +12,7 @@ class CreatePhotos < ActiveRecord::Migration[6.1]
     create_table :photos, id: false do |t| #  id: false  つけます
       t.integer :photo_id, primary_key: true, auto_increment: true
       t.string :mime_type, null: true
-      t.binary :photo_data ,limit: 5.megabyte
+      t.binary :photo_data ,limit: 5.megabyte, null: true
 
       t.timestamps
     end
