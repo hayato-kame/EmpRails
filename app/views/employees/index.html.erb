@@ -1,0 +1,42 @@
+<h1 class="display-4 text-primary">Employees#index</h1>
+<p>Find me in app/views/employees/index.html.erb</p>
+
+<table class="table">
+  <tr>
+    <th>社員ID</th><th>名前</th><th colspan="2"></th>
+  </tr>
+
+  <% @employees.each do |emp| %>
+    <tr>
+      <td><%= emp.employee_id %></td>
+      <td><%= emp.name %></td>
+
+      <td>
+            <%# 編集ボタンを押すと、GET送信で、編集画面を表示する method: :get が必要です （postだったら省略可能ですが。） 引数では、ハッシュは、最後にする%>
+        <%= form_with(model: emp, method: :get, url: {controller: 'employees', action: 'emp_manage', employee_id: emp.employee_id }) do |form| %>
+          <%# モデルに関係ない時には、hidden_field_tagを使う  hidden_field_tag :action_method , "edit"  第一引数、第二引数にしてください%>
+          <%= hidden_field_tag :action_method , "edit" %>
+          <%# form.インスタンスメソッドの第一引数がハッシュになってる %>
+          <%= form.hidden_field :employee_id => emp.employee_id %>
+          <%# <  %  = form.hidden_field :name => dep.name %  > %>
+          <%= form.submit "編集", class: "btn btn-primary" %>
+        <% end %>
+      </td>
+      <td>
+        <%= form_with(model: emp, method: :get, url: {controller: 'employees', action: 'emp_manage', employee_id: emp.employee_id }) do |form| %>
+          <%# モデルに関係ない時には、hidden_field_tagを使う  hidden_field_tag :action_method , "edit"  第一引数、第二引数にしてください%>
+          <%= hidden_field_tag :action_method , "edit" %>
+          <%# form.インスタンスメソッドの第一引数がハッシュになってる %>
+          <%= form.hidden_field :employee_id => emp.employee_id %>
+          <%= form.submit "削除", class: "btn btn-danger" , data: {confirm: "本当に削除しますか？" }%>
+        <% end %>
+
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<div>
+  <%= paginate @employees %>
+</div>
+<br>

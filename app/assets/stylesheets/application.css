@@ -32,11 +32,26 @@ h1 {
 }
 
 /* ページネーション */
-.page { padding:5px; border:1px lightblue solid; }
-.first { padding:5px; border:1px lightblue solid; }
-.prev { padding:5px; border:1px lightblue solid; }
-.next { padding:5px; border:1px lightblue solid; }
-.last { padding:5px; border:1px lightblue solid; }
+
+/* .pagination {font-size: 70%;}
+.page-item { padding:5px; border:1px lightblue solid; } */
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 15px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 15px;    /*角を丸くする*/
+  }
 
 /* バリデーションのエラーメッセージのリスト */
 .validation_err li {
