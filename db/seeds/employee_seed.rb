@@ -12,19 +12,46 @@ Employee.create(
 
 fnames = ["伊藤", "山本", "中村", "小林"];
 gnames = ["三郎", "四郎", "友子"];
-prefArray = ["東京都", "千葉県", "茨城県", "神奈川県"];
-departmentIdArray = ["D01", "D02", "D03"];
+pref_aray = ["東京都", "千葉県", "茨城県", "神奈川県"];
+dep_id_array = ["D01", "D02", "D03"];
 
 
 
 (1..9).times do |n|
 
   str_emp_id = sprintf("EMP%04d", (n + 3) )  #これで  EMP0004 から  EMP0012  まで作れる
-  # もし友子だったら性別は"女"になるようにする
-  
+  e_name = "${fnames[n % 4]}" + " " + "${gnames[n % 3]"
+  e_gender = ""
+  if name.include?("友子")　then
+    e_gender = "女"
+  else
+    e_gender = "男"
+  end
+  str_zip_number = sprintf("%03d", n*3) + sprintf("%04d", n*4)
+  random_address = self.get_ramdom(5)
+  h_date = Time.new.strftime("%Y-%m-%d")
+  r_date = (h_date + n.days).strftime("%Y-%m-%d")
+  # date = date.strftime("%Y-%m-%d")
 
 
   Employee.create(
-    {}
+    {employee_id: :str_emp_id, name: :e_name, age: rand(18..80), gender: :e_gender, photo_id: n + 3, zip_number: :str_zip_number,
+    pref: pref_array[n % 3], address1: :random_address, address2: :random_address, address3: :random_address, department_id: dep_id_array[n % 3],
+    hire_date: :h_date, retire_date: :r_date}
   )
+
+
+end
+
+private
+def get_ramdom(n)
+  hiragana = ["ぁ","あ","ぃ","い","ぅ","う","ぇ","え","ぉ","お",
+    "か","が","き","ぎ","く","ぐ","け","げ","こ","ご",
+    "さ","ざ","し","じ","す","ず","せ","ぜ","そ","ぞ",
+    "た","だ","ち","ぢ","っ","つ","づ","て","で","と","ど",
+    "な","に","ぬ","ね","の","は","ば","ぱ",
+    "ひ","び","ぴ","ふ","ぶ","ぷ","へ","べ","ぺ","ほ","ぼ","ぽ",
+    "ま","み","む","め","も","ゃ","や","ゅ","ゆ","ょ","よ",
+    "ら","り","る","れ","ろ","ゎ","わ","ゐ","ゑ","を","ん"]
+  str = hiragana.sample(n)
 end
