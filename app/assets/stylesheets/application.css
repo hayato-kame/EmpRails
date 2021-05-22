@@ -68,3 +68,16 @@ h1 {
     border-radius: 5px;
     color: rgb(17, 17, 17);
 }
+
+label.col-sm-3.col-form-label {
+    font-size: 22px;
+}
+
+/* 都道府県セレクトボックス */
+#employee_pref {
+    font-size: 80%;
+}
+/* 都道府県セレクトボックス クリックボタン*/
+input.pref_click {
+    font-size: 80%;
+}
