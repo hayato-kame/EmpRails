@@ -1,4 +1,5 @@
-<h1 class="display-4 text-primary">Employees#index</h1>
+<%# 検索結果を表示する時には、社員一覧を検索結果にするのであとで、修正する %>
+<h1 class="display-4 text-primary">社員一覧</h1>
 <p>Find me in app/views/employees/index.html.erb</p>
 
 <table class="table">
@@ -13,11 +14,12 @@
 
       <td>
             <%# 編集ボタンを押すと、GET送信で、編集画面を表示する method: :get が必要です （postだったら省略可能ですが。） 引数では、ハッシュは、最後にする%>
-        <%= form_with(model: emp, method: :get, url: {controller: 'employees', action: 'emp_manage', employee_id: emp.employee_id }) do |form| %>
+        <%= form_with(model: emp, method: :get, url: {controller: 'employees', action: 'display', employee_id: emp.employee_id }) do |form| %>
           <%# モデルに関係ない時には、hidden_field_tagを使う  hidden_field_tag :action_method , "edit"  第一引数、第二引数にしてください%>
           <%= hidden_field_tag :action_method , "edit" %>
           <%# form.インスタンスメソッドの第一引数がハッシュになってる %>
           <%= form.hidden_field :employee_id => emp.employee_id %>
+          <%# < % = binding.pry %>
           <%# <  %  = form.hidden_field :name => dep.name %  > %>
           <%= form.submit "編集", class: "btn btn-primary" %>
         <% end %>
@@ -38,5 +40,8 @@
 <br>
 <div>
   <%= paginate @employees %>
+</div>
+<div>
+<%= button_to "新規作成", {controller: 'employees', action: 'display'}, {method: :get, class: "btn btn-primary", params: { action_method: "add"}} %>
 </div>
 <br>

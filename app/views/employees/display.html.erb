@@ -1,2 +1,5 @@
-<h1>Employees#display</h1>
-<p>Find me in app/views/employees/display.html.erb</p>
+<% label = @action_method == "add" ? "新規作成" : "編集" %>
+<h1 class="display-4 text-primary">社員<%= label %>ページ</h1>
+<p></p>
+
+<%= render 'form', employee: @employee %>

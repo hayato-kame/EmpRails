@@ -14,16 +14,14 @@ Rails.application.routes.draw do
   get 'departments/display(/:department_id)', to: 'departments#display'
   post 'departments/display'
   # ()は必須パラメータでないことを表す
-  post 'departments/dep_manage(/:department_id)', to: 'departments#dep_manage'
-
   get 'departments/dep_manage(/:department_id)', to: 'departments#dep_manage'
+  post 'departments/dep_manage(/:department_id)', to: 'departments#dep_manage'
 
   get 'employees/index', to: 'employees#index'
   get 'employees', to: 'employees#index'
 
-  get 'employees/emp_manage(/:department_id)', to: 'employees#display'
-  
-  post 'employees/emp_manage(/:department_id)', to: 'employees#emp_manage'
+  get 'employees/display(/:employee_id)', to: 'employees#display'
+  post 'employees/emp_manage(/:employee_id)', to: 'employees#emp_manage'
 
 
 
