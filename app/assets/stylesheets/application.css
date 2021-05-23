@@ -73,11 +73,11 @@ label.col-sm-3.col-form-label {
     font-size: 22px;
 }
 
-/* 都道府県セレクトボックス */
-#employee_pref {
+/* 都道府県セレクトボックス 部署セレクトボックス*/
+#employee_pref, #employee_department_id, #employee_hire_date, #employee_retire_date {
     font-size: 80%;
 }
 /* 都道府県セレクトボックス クリックボタン*/
-input.pref_click {
+input.pref_click, input.department_click {
     font-size: 80%;
 }

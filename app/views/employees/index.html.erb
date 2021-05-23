@@ -1,6 +1,9 @@
 <%# 検索結果を表示する時には、社員一覧を検索結果にするのであとで、修正する %>
 <h1 class="display-4 text-primary">社員一覧</h1>
-<p>Find me in app/views/employees/index.html.erb</p>
+
+<% if @f_msg != "" %>
+<p class="f_msg"><%= @f_msg %></p>
+<% end %>
 
 <table class="table">
   <tr>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'departments/dep_manage(/:department_id)', to: 'departments#dep_manage'
   post 'departments/dep_manage(/:department_id)', to: 'departments#dep_manage'
 
+  
   get 'employees/index', to: 'employees#index'
   get 'employees', to: 'employees#index'
 

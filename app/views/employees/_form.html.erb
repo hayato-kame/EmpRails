@@ -21,10 +21,17 @@
     <%= form.text_field :zip_number, {class: "col-sm-9 form-control" } %>
   </div>
 
+  <%# <%= binding.pry %>
+
+  <% p_array = ['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県',
+  '千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県',
+  '滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県',
+  '愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県']%>
+
   <div class="form-group form-inline row">
     <%= form.label :pref, "都道府県:", {class: "col-sm-3 col-form-label" } %>
-    <%= form.select :pref, options_for_select(['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県']),
-    {size: 5, class: "form-control col-sm-9"}  %>
+    <%= form.select :pref, options_for_select(p_array, employee.pref),{},
+    {size: 1, class: "form-control col-sm-6" }  %>
     <%= form.submit("Click", class: "pref_click") %>
   </div>
 
@@ -43,6 +50,22 @@
     <%= form.text_field :address3, {class: "col-sm-9 form-control"} %>
   </div>
 
+  <div class="form-group form-inline row">
+    <%= form.label :department_id, "所属:", {class: "col-sm-3 col-form-label" } %>
+    <%= form.select :department_id, options_for_select(@department_name_array, employee.department.department_name ), {class: "form-control col-sm-9"} %>
+    <%= form.submit("Click", class: "department_click") %>
+  </div>
 
+  <div class="form-group form-inline row">
+    <%= form.label :hire_date, "入社日", {class: "col-sm-3 col-form-label" } %>
+    <%= form.date_field :hire_date, {class: "form-control col-sm-9"} %>
+  </div>
+
+  <div class="form-group form-inline row">
+    <%= form.label :retire_date, "退社日", {class: "col-sm-3 col-form-label" } %>
+    <%= form.date_field :retire_date, {class: "form-control col-sm-9"} %>
+  </div>
+
+  <%= form.submit "設定", {class: "btn btn-primary offset-3 w-25" } %>
 
 <% end %>

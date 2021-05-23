@@ -3,3 +3,5 @@
 <p></p>
 
 <%= render 'form', employee: @employee %>
+
+<%= button_to "キャンセル", {controller: 'employees', action: 'index'}, {method: :get, class: "btn btn-primary offset-3 w-25", params: { f_msg: "入力をキャンセルしました"}} %>
