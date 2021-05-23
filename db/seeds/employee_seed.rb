@@ -3,11 +3,11 @@
 
 # まず、３つ作った。createメソッドの引数には、配列を用意して、１データをハッシュにする 3つのハッシュで3データ作成
 Employee.create([
-  {employee_id: 'EMP0001', name: '山田 太郎', age: 35, gender: '男', photo_id: 1, zip_number: '100-0001', pref: '東京都',
+  {employee_id: 'EMP0001', name: '山田 太郎', age: 35, gender: 1, photo_id: 1, zip_number: '100-0001', pref: '東京都',
   address1: '千代田区', address2: '千代田', address3: 'ちよだ', department_id: 'D01', hire_date: '2000-11-11', retire_date: nil},
-  {employee_id: 'EMP0002', name: '日本 花子', age: 24, gender: '女', photo_id: 2, zip_number: '330-0841', pref: '埼玉県',
+  {employee_id: 'EMP0002', name: '日本 花子', age: 24, gender: 2, photo_id: 2, zip_number: '330-0841', pref: '埼玉県',
     address1: 'さいたま市', address2: '大宮区', address3: '東町', department_id: 'D03', hire_date: '2010-12-12', retire_date: '2017-09-07'},
-  {employee_id: 'EMP0003', name: '東京 次郎', age: 45, gender: '男', photo_id: 3, zip_number: '251-0013', pref: '神奈川県',
+  {employee_id: 'EMP0003', name: '東京 次郎', age: 45, gender: 1, photo_id: 3, zip_number: '251-0013', pref: '神奈川県',
     address1: '川崎市', address2: '麻生区', address3: '王禅寺', department_id: 'D03', hire_date: '1999-05-21', retire_date: nil}
 ])
 
@@ -23,9 +23,9 @@ dep_id_array = ["D01", "D02", "D03"];
   e_name = "#{fnames[(n+1) % 4]} #{gnames[(n+1) % 3]}"
   e_gender = ""
   if e_name.include?("友子")
-    e_gender = "女"
+    e_gender = 2 #女
   else
-    e_gender = "男"
+    e_gender = 1 #男
   end
   str_zip_number = sprintf("%03d", (n+1)*3) + '-' + sprintf("%04d", (n+1)*4)
   random_address_array = Employee.get_random(5)

@@ -6,10 +6,11 @@ class Employee < ApplicationRecord
 
   validates :name, :age, :gender, :zip_number, :pref, :address1, :address2, :address3, :department_id, :hire_date, {presence: {message: 'は、必須項目です。'}}
   validates :name, {length: {maximum: 255, message: 'は、255文字以内で入力してください' }}
-  # validates :age, {only_integer: {message: 'は、整数値を入れてください。'}, greater_than_or_equal_to: {0, message: 'は、０以上です。'}, less_than: {200, message: 'は、200未満です。'} }
-  # validates :age, numericality: {only_integer: {message: 'は、整数値を入れてください。'}, greater_than_or_equal_to: 0, less_than_or_equal_to: 200}
 
   validates :age, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 200}
+  # 性別は、integer型で、1 男性   2 女性
+  validates :gender, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 2}
+
   # 日付のバリデーションをカスタマイズする 入社日は、必須項目であればいい、上でつけてる 退社日は、独自のバリデーション
   validate :retire
 

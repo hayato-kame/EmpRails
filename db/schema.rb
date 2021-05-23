@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_05_18_215711) do
   create_table "employees", primary_key: "employee_id", id: :string, charset: "utf8mb4", force: :cascade do |t|
     t.string "name", limit: 50
     t.integer "age"
-    t.string "gender", limit: 1
+    t.integer "gender"
     t.integer "photo_id"
     t.string "zip_number", limit: 20
     t.string "pref", limit: 20
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_05_18_215711) do
 
   create_table "photos", primary_key: "photo_id", id: :integer, charset: "utf8mb4", force: :cascade do |t|
     t.string "mime_type"
-    t.binary "photo_data"
+    t.binary "photo_data", size: :medium
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

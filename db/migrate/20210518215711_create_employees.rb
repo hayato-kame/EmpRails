@@ -14,7 +14,7 @@ class CreateEmployees < ActiveRecord::Migration[6.1]
 
       t.string :name, limit: 50
       t.integer :age
-      t.string :gender, limit: 1 #文字長を1に指定 男  か  女
+      t.integer :gender
 
       # Railsのマイグレーションで外部キー制約を表現するためには、
 

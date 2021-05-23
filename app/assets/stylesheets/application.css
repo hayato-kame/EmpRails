@@ -81,3 +81,7 @@ label.col-sm-3.col-form-label {
 input.pref_click, input.department_click {
     font-size: 80%;
 }
+
+label.col-form-label {
+    font-size: 80%;
+}
