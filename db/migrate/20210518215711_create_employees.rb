@@ -58,9 +58,10 @@ class CreateEmployees < ActiveRecord::Migration[6.1]
       # t.references :department で departmentsテーブルを参照することを宣言します
       # cascadeはつけないこと  foreign_key: true つけないこと
       # t.references :department, null:false
+      # null: true はつけるとおかしくなるかも
 
       t.datetime :hire_date
-      t.datetime :retire_date, null: true
+      t.datetime :retire_date
 
       t.timestamps
     end

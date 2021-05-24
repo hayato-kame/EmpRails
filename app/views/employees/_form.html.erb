@@ -1,4 +1,4 @@
-<%=form_with(model: employee, method: :post, url: {controller: 'employees', action: 'emp_manage', employee_id: employee.employee_id } ) do |form| %>
+<%=form_with(model: employee, method: :post, multipart: true, url: {controller: 'employees', action: 'emp_manage', employee_id: employee.employee_id } ) do |form| %>
 
   <%= hidden_field_tag action_method: action_method %>
   <%= form.hidden_field employee_id: employee.employee_id %>
@@ -26,6 +26,21 @@
     </span>
   </div>
 
+  <div style="margin-top:15px">
+    <% if action_method == "edit" %>
+    写真:
+
+    <img src="data:<%= employee.photo.mime_type %>;base64, <%= @photo_data %>" alt="写真" title="社員の写真" width="300" height="250">
+
+<%# < %= image_tag "data:#{mime_type};base64,#{Base64.encode64(photo_data)}" %>
+
+    <% end %>
+  </div>
+    <%= form.label :photo_data, "写真:", {class: "col-sm-3 col-form-label"} %>
+    <%= form.file_field :photo_data, accept: "image/jpg, image/jpeg, image/png, image/tmp", class: "col-form-control" %>
+  <div class="form-group">
+
+  </div>
 
   <div class="form-group form-inline row">
     <%= form.label :zip_number, "郵便番号:", {class: "col-sm-3 col-form-label"} %>
@@ -61,11 +76,19 @@
     <%= form.text_field :address3, {class: "col-sm-9 form-control"} %>
   </div>
 
+  <% if action_method === "add" %>
+  <div class="form-group form-inline row">
+    <%= form.label :department_id, "所属:", {class: "col-sm-3 col-form-label" } %>
+    <%= form.select :department_id, options_for_select(@department_name_array ), {class: "form-control col-sm-9"} %>
+    <%= form.submit("Click", class: "department_click") %>
+  </div>
+  <% elsif action_method === "edit" %>
   <div class="form-group form-inline row">
     <%= form.label :department_id, "所属:", {class: "col-sm-3 col-form-label" } %>
     <%= form.select :department_id, options_for_select(@department_name_array, employee.department.department_name ), {class: "form-control col-sm-9"} %>
     <%= form.submit("Click", class: "department_click") %>
   </div>
+  <% end %>
 
   <div class="form-group form-inline row">
     <%= form.label :hire_date, "入社日", {class: "col-sm-3 col-form-label" } %>
